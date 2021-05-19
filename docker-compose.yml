@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  py-demo-load:
+    container_name: demo_load
+    build: 
+        context: ./
+        dockerfile: Dockerfile
+    image: py38-pg-pandas
+    container_name: py38-pandas-psycopg2
+    volumes:
+        - ./src:/usr/src
+    environment:
+      - PG_HOST
+      - PG_DB
+      - PG_USER
+      - PG_PWD
+      - PG_PORT
+      - PG_SCHEMA
+      - GOOGLE_SHEET_SRC
+      - GOOGLE_SHEET_ID
+      - GOOGLE_SHEET_TABS
+networks:
+    default:
+      name: seaber-network
