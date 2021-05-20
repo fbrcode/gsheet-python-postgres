@@ -1,12 +1,26 @@
-# Seaber : Demo account (using Google Sheets)
+# Data import (using Google Sheets)
 
-In order to build up an account with sample data with the intent of application demonstration for clients. This process allows reading initial data and settings from google sheets source and trigger a process to fill up the database.
+Allow reading data from google sheets source and trigger a process to fill up a PostgreSQL database.
 
 ## Google Sheet setup
 
 A google sheet with a defined structure must exist and be shared by link to be readable by this app.
 
+Create any new google sheet and load stock data based on google analytics function.
+
+*Amazon stocks*
+=googlefinance("AMZN","all", DATE(2020,1,1), DATE(2020,12,30), "DAILY")
+
+*Apple stocks*
+=googlefinance("AAPL","all", DATE(2020,1,1), DATE(2020,12,30), "DAILY")
+
+Fill tabs with the data you want and name them properly.
+
 ![google-sheet-sample](img/google-sheet-sample.png "Google Sheet Sample Setup")
+
+> Note : Remind to grab the google-sheet-id, tab names and the range to capture.
+
+Also share the sheet to anyone with the link to be able to read the data.
 
 ## Environment settings
 
@@ -24,7 +38,7 @@ These are the supported environment variables:
 - GOOGLE_SHEET_ID=[google sheet unique id] \# *highlighted in URL*
 - GOOGLE_SHEET_TABS=[google sheet tabs and column range to be captured]
 
-Copy `.env.example` to `.env` and change accordingly. 
+Copy `.env.example` to `.env` and change accordingly.
 
 ## Building image
 
